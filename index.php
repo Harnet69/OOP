@@ -1,20 +1,26 @@
 <h1>Работа с OOP по версии Harnet</h1>
 <?
-	class Animal {
-		public $name;
-		public $lastname;
-		
-		function __construct($n,$l){
-			$this->name = $n;
-			$this->lastname = $l;
-		}
-		
-		function show_anim(){
-			echo $this->name."<br>";
-			echo $this->lastname."<br>";
-		}
+class User {
+	public $name;
+	public $login;
+	public $password;
+	
+	function __construct ($n, $l, $p){
+		$this->name = $n;
+		$this->login = $l;
+		$this->password = $p;
+		echo "Объект ".$this->name." создан<br>";
 	}
 
-	$cat = new Animal("Атос","Атосыч");
-	$cat->show_anim();
+	function showInfo(){
+		echo "Имя пользователя : ".$this->name.", логин : ".$this->login.", пароль : ".$this->password."<hr>";
+	}
+}
+
+$user1 = new User("Иван","ivan","12345");
+$user1->showInfo();
+$user2 = new User("Василий","vasil","34567");
+$user2->showInfo();
+$user3 = new User("Пётр","petr","98765");
+$user3->showInfo();
 ?> 
