@@ -17,7 +17,4 @@
 
 	$cat = new Animal("Атос","Атосыч");
 	$cat->show_anim();
-	
-	
-	
 ?> 
