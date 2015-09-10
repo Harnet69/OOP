@@ -9,9 +9,15 @@ class Animal{
 	function DrawBr(){
 		echo '<br>';
 	}
+	function __construct($num){
+		echo 'Object '.$num.' created <br>';
+	}
+	function __destruct(){
+		echo "Object deleted <br>";
+	}
 }
-$cat = new Animal();
-$dog = new Animal();
+$cat = new Animal(1);
+$dog = new Animal(2);
 $cat->name = "Cat";
 $dog->name = "Dog";
 $cat->sayHello("Myau");
