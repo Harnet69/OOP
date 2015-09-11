@@ -11,6 +11,14 @@ class User {
 		$this->password = $p;
 		echo "Объект ".$this->name." создан<br>";
 		echo "Эта сущность принадлежит классу ".__class__."<br>";
+		
+	function __clone(){
+		echo "Объект ".$this->name." Клонирован<br>";		
+	}
+	
+	}
+	function __destruct(){
+		echo "Объект ".$this->name." удалён<br>";		
 	}
 
 	function showInfo(){
@@ -21,8 +29,10 @@ class User {
 
 $user1 = new User("Иван","ivan","12345");
 $user1->showInfo();
+$myuser = clone $user1;
 $user2 = new User("Василий","vasil","34567");
 $user2->showInfo();
 $user3 = new User("Пётр","petr","98765");
 $user3->showInfo();
+echo "Код закончился, можно приступать к удалению<hr>";
 ?> 
