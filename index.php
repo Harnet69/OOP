@@ -10,10 +10,12 @@ class User {
 		$this->login = $l;
 		$this->password = $p;
 		echo "Объект ".$this->name." создан<br>";
+		echo "Эта сущность принадлежит классу ".__class__."<br>";
 	}
 
 	function showInfo(){
-		echo "Имя пользователя : ".$this->name.", логин : ".$this->login.", пароль : ".$this->password."<hr>";
+		echo "Имя пользователя : ".$this->name.", логин : ".$this->login.", пароль : ".$this->password."<br>";
+		echo "Использованный метод ".__METHOD__."<hr>";
 	}
 }
 
