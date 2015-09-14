@@ -28,7 +28,15 @@ class User{
 class superUser extends User{
 	public $role;
 	
+	function __construct($n, $l, $p, $r){
+		parent:: __construct($n, $l, $p);
+		$this->role = $r;
+	}
 	
+	function showInfo(){
+		parent:: showInfo();
+		echo 'Role : '.$this->role.'<br>';
+	}
 }
 $user1 = new User('Ivan','ivan','123');
 $user1->showInfo();
@@ -38,8 +46,6 @@ $user3 = new User('John','john','789');
 $user3->showInfo();
 $user4 = clone $user3;
 $user4->showInfo();
-$user = new superUser('Vasya','vasya','000');
-$user->role = 'admin';
+$user = new superUser('Vasya','vasya','000','admin');
 $user->showInfo();
-echo 'Role : '.$user->role.'<br>';
 ?>
