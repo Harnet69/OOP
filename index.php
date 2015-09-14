@@ -43,7 +43,7 @@ class MyUser extends User
 	}
 }
 
-/*$user1 = new User("Иван","ivan","12345");
+$user1 = new User("Иван","ivan","12345");
 $user1->showInfo();
 $myuser = clone $user1;
 $myuser->showInfo();
@@ -51,7 +51,7 @@ $user2 = new User("Василий","vasil","34567");
 $user2->showInfo();
 $user3 = new User("Пётр","petr","98765");
 $user3->showInfo();
-echo "Код закончился, можно приступать к удалению<hr>"; */
+echo "Код закончился, можно приступать к удалению<hr>"; 
 $myuser1 = new MyUser("Яша","Yasha","11111");
 $myuser1->showInfo();
 $myuser1->age = 25;
