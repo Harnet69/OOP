@@ -37,13 +37,20 @@ class User
 class MyUser extends User
 {
 	public $age;
-	function ShowAge ()
+	function __construct ($n, $l, $p, $a)
 	{
-	echo "Возраст : ".$this->age."<hr>";
+		parent:: __construct ($n, $l, $p);
+		$this->age = $a;		
 	}
+	function showInfo()
+	{
+		parent:: showInfo();
+		echo "Возраст ".$this->age."<br>";
+	}
+	
 }
 
-$user1 = new User("Иван","ivan","12345");
+/*$user1 = new User("Иван","ivan","12345");
 $user1->showInfo();
 $myuser = clone $user1;
 $myuser->showInfo();
@@ -51,9 +58,7 @@ $user2 = new User("Василий","vasil","34567");
 $user2->showInfo();
 $user3 = new User("Пётр","petr","98765");
 $user3->showInfo();
-echo "Код закончился, можно приступать к удалению<hr>"; 
-$myuser1 = new MyUser("Яша","Yasha","11111");
+echo "Код закончился, можно приступать к удалению<hr>"; */
+$myuser1 = new MyUser("Яша","Yasha","11111", "25");
 $myuser1->showInfo();
-$myuser1->age = 25;
-$myuser1->ShowAge();
 ?> 
