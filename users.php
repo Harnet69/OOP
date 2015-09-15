@@ -48,4 +48,46 @@ $user4 = clone $user3;
 $user4->showInfo();
 $user = new superUser('Vasya','vasya','000','admin');
 $user->showInfo();
+echo '<hr>';
+
+class News{
+	public $name;
+	protected $lastname;
+	private $password;	
+	
+	function __construct($n, $l, $p){
+		$this->name = $n;
+		$this->lastname = $l;
+		$this->password = $p;
+	}
+	
+	function ShowNew(){
+		echo '<br>'.$this->name.' '.$this->lastname.' '.$this->password;	
+	}
+}
+class NewNews extends News{
+	public $name;
+	public $lastname; 
+	public $password;
+	public $role;
+	
+	function __construct($n, $l, $p, $r){
+		parent:: __construct($n, $l, $p);
+		$this->role = $r;
+	}
+	
+	function ShowNew(){
+		parent:: ShowNew();
+		echo ' '.$this->role;		
+		echo '<hr>';
+	}
+}
+$unit1 = new News('One','First','000');
+echo $unit1->ShowNew();
+$unit2 = new NewNews('Two','Second','111', 'Admin');
+echo $unit2->ShowNew();
+echo $unit2->name.'<br>';
+echo $unit2->lastname.'<br>';
+echo $unit2->password.'<br>';
+echo $unit2->role.'<br>';
 ?>
