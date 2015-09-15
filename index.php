@@ -80,9 +80,9 @@ class Mod{
 }
 class MyMod extends Mod
 {
-	public $lastname;
-	public $password;
-	
+	public $lastname; //Вот тут объявляем свойство родителя пабликом!
+	public $password; //Вот тут объявляем свойство родителя пабликом!
+
 	function __construct($r, $n, $l, $p){
 		parent:: __construct($n, $l, $p);
 		$this->role = $r;
