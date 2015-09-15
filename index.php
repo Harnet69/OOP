@@ -58,7 +58,43 @@ $user2 = new User("Василий","vasil","34567");
 $user2->showInfo();
 $user3 = new User("Пётр","petr","98765");
 $user3->showInfo();
-echo "Код закончился, можно приступать к удалению<hr>"; */
+echo "Код закончился, можно приступать к удалению<hr>"; 
 $myuser1 = new MyUser("Яша","Yasha","11111", "25");
-$myuser1->showInfo();
+$myuser1->showInfo();*/
+
+class Mod{
+	public $name;
+	public $lastname;
+	public $password;	
+	
+	function __construct($n, $l, $p){
+		$this->name = $n;
+		$this->lastname = $l;
+		$this->password = $p;
+	}
+	
+		function ShowMy()
+	{
+		echo $this->name." ".$this->lastname." ".$this->password;	
+	}
+}
+class MyMod extends Mod
+{
+	function __construct($r, $n, $l, $p){
+		parent:: __construct($n, $l, $p);
+		$this->role = $r;
+	}
+	function ShowMy()
+	{
+		echo " ".$this->role." ";
+		parent:: ShowMy();
+		echo "<hr>";
+	}
+
+}
+$mod1 = new MyMod("Admin","Андрей","Семёнов","111112");
+echo $mod1->ShowMy();
+$mod2 = new MyMod("user","Свала","Зиберман","зыффвыва");
+echo $mod2->ShowMy();
+
 ?> 
