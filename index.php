@@ -1,6 +1,6 @@
 <h1>Работа с OOP по версии Harnet</h1>
 <?
-class User 
+/*class User 
 {
 	public $name;
 	public $login;
@@ -50,7 +50,7 @@ class MyUser extends User
 	
 }
 
-/*$user1 = new User("Иван","ivan","12345");
+$user1 = new User("Иван","ivan","12345");
 $user1->showInfo();
 $myuser = clone $user1;
 $myuser->showInfo();
@@ -71,6 +71,10 @@ class Mod{
 		$this->name = $n;
 		$this->lastname = $l;
 		$this->password = $p;
+	}
+	
+	function ShowPriv(){ // описал метод при помощи которого можно дёрнуть приват свойство родителя
+		return $this->password;
 	}
 	
 		function ShowMy()
@@ -102,5 +106,5 @@ echo $mod2->ShowMy();
 echo $mod1->name."<br>";
 echo $mod1->lastname."<br>";
 echo $mod1->password;
-
+	echo $a = $mod1->ShowPriv(); // дёрнул метод при помощи которого можно дёрнуть приват свойство родителя
 ?> 
