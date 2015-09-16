@@ -1,4 +1,9 @@
 <h1>Работа с OOP по версии Harnet</h1>
+<ul style="list-style: none">
+<li><a href="Connect_db.php">Подключение к базе данных</a></li>
+<li><a href="Try_catch.php">Обработка исключений</a></li>
+<li><a href="session.php">Гребучие сессии</a></li>
+</ul>
 <?
 /*class User 
 {
