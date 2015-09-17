@@ -1,14 +1,14 @@
 <?
 session_start();
-	echo $_SESSION['user'];
-	if (isset ($_SESSION['user'])){
-	echo "Бобо";}
-/*if (isset($_SESSION['user']) ){
-	//$us = $_SESSION['user'];
-	//echo $us;
-	//$user = new Connect("localhost", $user, $pass, $table);
-	//$user->select_all();
-}*/
+	if (!empty($_SESSION['user']) and !empty($_SESSION['pass']) and !empty($_SESSION['table']) ){
+	echo "Спасибо что зашли, ".$_SESSION['user']."<hr>";
+	$user = $_SESSION['user'];
+	$pass = $_SESSION['pass'];
+	$table = $_SESSION['table'];
+	$user = new Connect("localhost", $user, $pass, $table);
+	$user->select_all();
+	exit;
+	}
 if ($_SERVER[REQUEST_METHOD] == "POST"){
 	$user = trim(strip_tags($_POST['user']));
 	$pass = trim(strip_tags($_POST['pass']));
@@ -29,7 +29,7 @@ private $db;
 		$this->user = $u; 
 		$this->pass = $p; 
 		$this->table = $t; 
-		$this->db = mysqli_connect ($this->host, $this->user, $this->pass, $this->table) or die (mysqli_error);
+		$this->db = mysqli_connect ($this->host, $this->user, $this->pass, $this->table) or die (mysqli_error());
 	}
 	
 	function select_all(){
