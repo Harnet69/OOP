@@ -102,14 +102,13 @@ class MyMod extends Mod
 		parent:: ShowMy();
 		echo "<hr>";
 	}
-
 }
-$mod1 = new MyMod("Admin","Андрей","Семёнов","111112");
-echo $mod1->ShowMy();
-$mod2 = new MyMod("user","Свала","Зиберман","зыффвыва");
-echo $mod2->ShowMy();
-echo $mod1->name."<br>";
-echo $mod1->lastname."<br>";
-echo $mod1->password;
-	echo $a = $mod1->ShowPriv(); // дёрнул метод при помощи которого можно дёрнуть приват свойство родителя
+//$mod1 = new MyMod("Admin","Андрей","Семёнов","111112");
+//echo $mod1->ShowMy();
+//$mod2 = new MyMod("user","Свала","Зиберман","зыффвыва");
+//echo $mod2->ShowMy();
+//echo $mod1->name."<br>";
+//echo $mod1->lastname."<br>";
+//echo $mod1->password;
+//	echo $a = $mod1->ShowPriv(); // дёрнул метод при помощи которого можно дёрнуть приват свойство родителя
 ?> 
