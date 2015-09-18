@@ -1,24 +1,40 @@
 <?
-abstract class Human {
-	public $fio;
+class User {
+	static public $mycount=0;
+	public $name;
+	public $lastname;
 	public $age;
-	function __construct($f, $a){
-		$this->fio = $f;
+	public $town;
+	function __construct ($n, $l, $a, $t){
+		self::$mycount++;
+		$this->name = $n;
+		$this->lastname = $l;
 		$this->age = $a;
+		$this->town = $t;
 	}
-	function Show(){
-		echo $this->fio." ".$this->age;
-	}
-	abstract function add();
-}
-class Man extends Human{
-	function add(){
-		echo "Lelele";
-	}
-	
+		function Show(){
+		echo $this->name."<br>";
+	}	
 }
 
-$human1 = new Man("Иванов Иван Иваныч", 55);
-$human1->Show();
-$human1->add();
+class MuUser extends User{
+	final function Show(){
+		echo $this->name."<br>";
+		echo $this->lastname."<br>";
+	}
+}
+
+$user1 = new User("Иванов","Иван",25,"Москва");
+$user2 = new MuUser("Петров","Пётр",40,"Нижневартовск");
+$user3 = new User("Сидор","Сидоров",18,"Задрыщинск");
+$user1->Show();
+$user2->Show();
+echo user::$mycount;
+
+
+
+		//foreach ($user1 as $n=>$v){
+			//echo $n." - ".$v."<br>";
+		//}
+		//}
 ?>
