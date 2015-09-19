@@ -1,59 +1,6 @@
 <?
-interface ISuperUser{
-	function getInfo();
-}
-abstract class AUser{
-	abstract function showInfo();
-}
-
-class User extends AUser{
-	public $name;
-	public $login;
-	public $password;
-	
-	function __construct($n, $l, $p){
-		$this->name = $n;
-		$this->login = $l;
-		$this->password = $p;
-	}
-	
-	function showInfo(){
-		echo '<p>Name : '.$this->name.'<br> Login : '.$this->login.'<br> Password : '.$this->password.'<br>';
-	}
-		
-	function __destruct(){
-		echo '<br>User - '.$this->login.' deleted';
-	}
-	
-	function __clone(){
-		$this->name = 'Guest';
-		$this->login = 'guest';
-		$this->password = '111';
-	}
-}
-
-class SuperUser extends User implements ISuperUser{
-	public $role;
-	
-	function __construct($n, $l, $p, $r){
-		parent:: __construct($n, $l, $p);
-		$this->role = $r;
-	}
-	
-	function showInfo(){
-		parent:: showInfo();
-		echo 'Role : '.$this->role.'<br>';
-	}
-	
-	function getInfo(){
-		$arr = array($user);
-		foreach($this as $k=>$v){
-			$arr[$k] = $v;
-			echo $k.' : '.$v.'<br>';
-		}
-		return $arr;
-		///return (array)$this;
-	}
+function __autoload($class_name){
+	include 'classes/'.$class_name.'.class.php';
 }
 $user1 = new User('Ivan','ivan','123');
 $user1->showInfo();
@@ -64,12 +11,16 @@ $user3->showInfo();
 $user4 = clone $user3;
 $user4->showInfo();
 $user = new SuperUser('Vasya','vasya','000','admin');
+$user0 = new SuperUser('Vasya','vasya','000','admin');
 $user->showInfo();
 $user->getInfo();
-
+echo '<hr>';
+echo 'All users : '.User::$countU;
+echo '<hr>';
+echo 'All Superusers : '.SuperUser::$countSU;
 echo '<hr>';
 
-class News{
+/*class News{
 	public $name;
 	protected $lastname;
 	private $password;	
@@ -108,5 +59,5 @@ echo $unit2->ShowNew();
 echo $unit2->name.'<br>';
 echo $unit2->lastname.'<br>';
 echo $unit2->password.'<br>';
-echo $unit2->role.'<br>';
+echo $unit2->role.'<br>';*/
 ?>
