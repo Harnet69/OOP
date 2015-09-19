@@ -1,4 +1,11 @@
 <?
+class Car{
+	const NUMWHEELS = 4;
+	function PrintNumwheels(){
+		echo self::NUMWHEELS;
+	}
+}
+
 class MyExceptionOne extends Exception{
 	function __construct($msg){
 		parent:: __construct($msg);
@@ -62,4 +69,6 @@ $cat->name = "Cat";
 $dog->name = "Dog";
 $cat->sayHello("Myau");
 $dog->sayHello("Gav");
+$car = new Car();
+echo Car::NUMWHEELS.'<br>';
 ?>
