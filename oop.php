@@ -1,4 +1,16 @@
 <?
+class MyExceptionOne extends Exception{
+	function __construct($msg){
+		parent:: __construct($msg);
+	}
+}
+
+class MyExceptionTwo extends Exception{
+	function __construct($msg){
+		parent:: __construct($msg);
+	}
+}
+
 class Animal{
 	public $name;
 	public $age = 0;
@@ -12,13 +24,21 @@ class Animal{
 		echo '<br>';
 	}
 	
-	function __construct($num){
+	function __construct($x, $y){
 		try{
-			if(!$num){
-				throw new Exception('No animal');
+			if($x == 0){
+				throw new MyExceptionOne('No parametr 1');
 			}
-		echo 'Object '.$num.' created <br>';
-		}catch(Exception $e){
+			if($y == 0){
+				throw new MyExceptionTwo('No parametr 2');
+			}
+		echo 'Object '.$x, $y.' created <br>';
+		}catch(MyExceptionOne $e){
+			echo 'Error: '.$e->getMessage().'<br>';
+			echo 'Line #: '.$e->getline().'<br>';
+			echo 'File: '.$e->getfile().'<br>';
+			
+		}catch(MyExceptionTwo $e){
 			echo 'Error: '.$e->getMessage().'<br>';
 			echo 'Line #: '.$e->getline().'<br>';
 			echo 'File: '.$e->getfile().'<br>';
@@ -34,9 +54,9 @@ class Animal{
 		echo 'Object cloned <br>';
 	}
 }
-$cat = new Animal(1);
-$dog = new Animal(2);
-$mouse = new Animal();
+$cat = new Animal(0,1);
+$dog = new Animal(1,0);
+$mouse = new Animal(1,7 );
 $supercat = clone $cat;
 $cat->name = "Cat";
 $dog->name = "Dog";
