@@ -47,9 +47,9 @@ class SuperUser extends User implements ISuperUser{
 	
 	function getInfo(){
 		$arr = array($user);
-		foreach($this as $k->$v){
+		foreach($this as $k=>$v){
 			$arr[$k] = $v;
-			echo $k;
+			echo $k.' : '.$v.'<br>';
 		}
 		return $arr;
 		///return (array)$this;
