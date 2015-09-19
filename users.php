@@ -1,5 +1,12 @@
 <?
-class User{
+interface ISuperUser{
+	function getInfo();
+}
+abstract class AUser{
+	abstract function showInfo();
+}
+
+class User extends AUser{
 	public $name;
 	public $login;
 	public $password;
@@ -25,7 +32,7 @@ class User{
 	}
 }
 
-class superUser extends User{
+class SuperUser extends User implements ISuperUser{
 	public $role;
 	
 	function __construct($n, $l, $p, $r){
@@ -37,6 +44,15 @@ class superUser extends User{
 		parent:: showInfo();
 		echo 'Role : '.$this->role.'<br>';
 	}
+	
+	function getInfo(){
+		$arr = array();
+		foreach($this as $k->$v){
+			$arr[$k] = $v;
+		}
+		return $arr;
+		///return (array)$this;
+	}
 }
 $user1 = new User('Ivan','ivan','123');
 $user1->showInfo();
@@ -46,8 +62,9 @@ $user3 = new User('John','john','789');
 $user3->showInfo();
 $user4 = clone $user3;
 $user4->showInfo();
-$user = new superUser('Vasya','vasya','000','admin');
+$user = new SuperUser('Vasya','vasya','000','admin');
 $user->showInfo();
+
 echo '<hr>';
 
 class News{
