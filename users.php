@@ -46,9 +46,10 @@ class SuperUser extends User implements ISuperUser{
 	}
 	
 	function getInfo(){
-		$arr = array();
+		$arr = array($user);
 		foreach($this as $k->$v){
 			$arr[$k] = $v;
+			echo $k;
 		}
 		return $arr;
 		///return (array)$this;
@@ -64,6 +65,7 @@ $user4 = clone $user3;
 $user4->showInfo();
 $user = new SuperUser('Vasya','vasya','000','admin');
 $user->showInfo();
+$user->getInfo();
 
 echo '<hr>';
 
