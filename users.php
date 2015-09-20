@@ -2,6 +2,7 @@
 function __autoload($class_name){
 	include 'classes/'.$class_name.'.class.php';
 }
+
 $user1 = new User('Ivan','ivan','123');
 $user1->showInfo();
 $user2 = new User('Petr','petr','456');
@@ -20,6 +21,12 @@ echo '<hr>';
 echo 'All Superusers : '.SuperUser::$countSU;
 echo '<hr>';
 
+if ($user0 instanceOf User){
+echo 'Admin is User';
+}
+if(is_a($user0, User)){
+echo 'Admin is User';
+}
 /*class News{
 	public $name;
 	protected $lastname;
