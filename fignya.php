@@ -1,5 +1,6 @@
 <?
-class User{
+phpinfo();
+/*class User{
 	public $name;
 	public $login;
 	public $pass;
@@ -20,7 +21,7 @@ class User{
 }
 $class = "User";
 $method = "getInfo";
-$class::$method();
+$class::$method();*/
 /*$user1 = new User('John','john','123');
 $user1->getInfo();
 $user2 = new User('Вася','ДодО','ва');

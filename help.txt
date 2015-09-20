@@ -1,0 +1,23 @@
+ООП
+--------
+Класс: 
+class MyClass{
+	public $name = 'John'; // свойство класса
+	public $age;
+	public function SayHello($who){// описание метода 
+		echo 'Hello, '.$this->name; //обращение к св-ву
+		$this->DrawBr();// обращение к методу
+	}
+	function DrawBr(){
+		echo '<br>';
+	}
+}
+$myObj = new MyClass();  //инициализация класса(создание объекта,экземпляра класса)
+echo $myObj->name; //доступ к св-вам класса
+$myObj->age = 25; // изменение значения св-вам
+$myObj->SayHello('John');// вызов метода
+
+Псевдоконстанты: 
+__METHOD__ -вызов метода
+__CLASS__-имя класса
+Модификаторы доступа: public, protected, private
