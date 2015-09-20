@@ -20,4 +20,5 @@ $myObj->SayHello('John');// вызов метода
 Псевдоконстанты: 
 __METHOD__ -вызов метода
 __CLASS__-имя класса
+
 Модификаторы доступа: public, protected, private
