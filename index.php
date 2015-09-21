@@ -112,3 +112,10 @@ class MyMod extends Mod
 //echo $mod1->password;
 //	echo $a = $mod1->ShowPriv(); // дёрнул метод при помощи которого можно дёрнуть приват свойство родителя
 ?> 
+<h1>OOP work</h1>
+<ul>
+<li><a href="try.php">Try-catch page</a></li>
+<li><a href="oop.php">Animal's class</a></li>
+<li><a href="users.php">Users class</a></li>
+<li><a href="invisible.php">Invisible properties</a></li>
+</ul>
