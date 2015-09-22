@@ -122,3 +122,74 @@ function __autoload($class_name){
 Каждый класс в отдельном файле(имя класса == имя файла)
 
 Доступ к невидимым свойствам.
+Поля и свойства - свойство это интерфейс доступа к полю. Поле всегда private
+Защита с помощью сеттеров и геттеров. Продолжение работы кода даже при вызове несуществующего метода или обращении к приватному или невидимому свойству.
+<?
+class User{
+	private $_data = array();
+	
+	public function __set($name, $value){
+		$this->_data[$name] = $value;
+	}
+		
+	public function __get($name){
+		if(array_key_exists ($name, $this->data)){
+			return $this->data[$name];
+		}
+	}
+	//доступ к невидимому методу
+	public function __call($name, $a){
+		echo $name.' do not work '. implode(', ',$a);
+	}
+	/* значение $name регистрозависимо!*.
+	public static function __callStatic($name, $a){
+		echo "Вызов метода '$name'". implode(', ', $a);
+	}
+	*/
+	private function bebe(){
+		echo 'memememe';
+	}
+	
+	public function __toString(){
+		return "A vot figvam!";
+	}
+}
+$object = new User;
+$object->name = "superpuper";
+echo '<h1>'.$object->name.'</h1>';
+$object->foo(1,2);
+echo '<br>blabla<hr>';
+$object->bebe();
+echo '<br>blabla<hr>';
+echo $object;
+?>
+И еще хороший пример(подобие True OOP) :
+<?
+class Person{
+	private $_name;
+	private $_age;
+	function __set($n, $v){
+		switch($n){
+			case 'name' : $this->_name = $v;break:
+			case 'age' : $this->_age = $v;break;
+			default: throw new Exception('ERROR')
+		}
+	}
+	function __get($n){
+		switch($n){
+			case 'name' : return $this->_name;break:
+			case 'age' : return $this->_age;break;
+			default: throw new Exception('ERROR')
+		}
+	}
+}
+?>
+
+РНР не поддерживает перегрузку функций!!!
+
+Преобразование объекта в строку.
+	function __toString(){
+		return "A vot figvam!";
+	}
+тогда в случае $one = new Person;
+echo $one; выведется A vot figvam!

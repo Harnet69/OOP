@@ -30,6 +30,6 @@ echo '<h1>'.$object->name.'</h1>';
 $object->foo(1,2);
 echo '<br>blabla<hr>';
 $object->bebe();
-echo '<br>blabla<hr>';
+echo '<br>WORk and WORK<hr>';
 echo $object;
 ?>
