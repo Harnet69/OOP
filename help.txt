@@ -193,3 +193,101 @@ class Person{
 	}
 тогда в случае $one = new Person;
 echo $one; выведется A vot figvam!
+
+Объект как функция(РНР 5.4)
+сlass Test Class{
+	public function __invoke($var){
+		return $var * $var;
+	}
+}
+$obj = new Testclass();
+echo $obj(5);
+
+Контроль типа (type-hint)
+function foo(ClassA $obj){
+/*Ожидается только экземпляр класса ClassA*/
+}
+function foo(callable $x){///сюда передается что-то вызываемое
+	return $x();
+}
+варианты что можно передать:
+-имя функции
+-foo(['Classname', 'staticMethodname']);//массив, где имя класса и имя метода
+foo($object, 'methodName');//объект и имя метода
+foo($invokableObject);///тот объект который инвотится
+
+Сериализация
+если объект просто сериализовать, то он будет пустым
+class User{
+	private $login,$password;
+	function __construct($login,$password){
+		$this->login = $login;
+		$this->password = $password;
+		$this->getUser();
+	}
+	private function getUser(){}
+	public function __sleep(){//должен возвращать массив имен в виде строк
+		return array('login', 'password');
+	}
+	public function __wakeup(){//это надо для вызова getUser, без вызова конструктора
+		$this->getUser();
+	}
+}
+
+Traits(РНР 5.5) Типажи
+это как класс, но от них нельзя создать экземпляр, их можно только подключать.
+trait Hello{
+	function hello(){return 'Hello';}
+}
+trait User{
+	function user($name){return $name;}
+}
+class Welcome{
+	use Hello, User;
+}
+$obj = new Welcome();
+echo $obj->hello(), ' ', $obj->user('John');
+
+Наследование (трэйты можно вкладывать в трэйты)
+trait Hello{
+	function hello(){return 'Hello';}
+}
+trait User{
+	function user($name){return $name;}
+}
+trait Greeting{
+	use Hello, User;
+	function sayHello($name){
+		echo $this->hello(), $this->user($name);
+	}
+}
+class Welcome {use Greeting;}
+(new Welcome())->sayhello('John');
+
+Изменение модификаторов только в трэйтах!!
+trait Hello{
+	private function sayHello($name){
+		return 'Hello', $name;
+	}
+}
+class Welcome {
+	use Hello{sayHello as public};
+}
+$obj = new Welcome();
+echo $obj->sayHello('John');
+
+Разрешение конфликтов
+trait Hello{
+	private function sayHello(){return 'Hello';}
+}
+trait User{
+	public function sayHello($name){return $name;}
+}
+class Welcome {
+	use User, Hello{
+		Hello::sayHello as public word;//используй метод как паблик
+		User::sayHello insteadof Hello;//используй под именем сэйхеллоу юзеровский вместо хеллоу
+		}
+}
+$obj = new Welcome();
+echo $obj->word(), ' ', $obj->sayHello('John');
