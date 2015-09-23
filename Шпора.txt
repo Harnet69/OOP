@@ -120,6 +120,10 @@ if (is_a($SuperUser1, User)){// преверяется наследование,
 	echo "Всё окей!";}
 if (SuperUser1 instanceOf User){// преверяется наследование, т.е. есть ли в наследком у User $SuperUser1
 	echo "Всё окей!";}
+	
+Функция автоподключения класса (в папе class каждый класс в отдельном файле)
+function __autoload($name){
+	include "/class/".$name.".class.php";
 
 
 Работа с Git
