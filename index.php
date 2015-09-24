@@ -4,6 +4,9 @@
 <li><a href="Try_catch.php">Обработка исключений</a></li>
 <li><a href="test.php">Тест</a></li>
 <li><a href="static.php">Статические</a></li>
+<li><a href="set-get.php">Сеттеры и геттеры</a></li>
+<li><a href="homework.php">Домашка</a></li>
+<li><a href="serialize.php">Сериализация</a></li>
 </ul>
 <?
 /*class User 

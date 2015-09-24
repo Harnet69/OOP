@@ -1,7 +1,7 @@
 <h1>Тест</h1>
 <?
 class User {
-	/*private $arr = array();
+	private $arr = array();
 	function __set ($n, $v){
 		$this->arr[$n] = $v;
 	}
@@ -18,7 +18,6 @@ class User {
 		echo implode (',',$mm);
 
 	}	
-*/
 }
 
 $user1 = new User;
