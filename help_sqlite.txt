@@ -22,7 +22,7 @@ class myDB extends SQLite3{
 $db = new MyDB();
 
 Существуют запросы ответные и безответные
-Безответные : INSERT DELETE CREATE. 
+Безответные : INSERT DELETE CREATE UPDATE. 
 $result = $db -> exec($sql); //для безответных запросов сущ метод exec который возвращает  true-false
 $db -> changes(); //метод, чтобы узнать об изменениях 
 Отслеживание ошибок:
