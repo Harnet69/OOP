@@ -1,0 +1,10 @@
+################### Таблица note ######################
+CREATE TABLE note(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title TEXT,
+	description TEXT,
+	author TEXT,
+	datetime INTEGER
+)
+#######################################################
+

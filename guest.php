@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: text/html;charset=utf-8');
-require 'NewsDB.class.php';
-$news = new NewsDB;
+require 'guestDB.class.php';
+$note = new GuestDB;
 $errMsg = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-	include 'save_news.inc.php';
+	include 'save_note.inc.php';
 }
 
 ?>
@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-	<title>Новостная лента</title>
+	<title>Гостевая книга</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
 
-<h1>Последние новости</h1>
+<h1>отзывы и заметки</h1>
 <?php
 if($errMsg){
 	echo "<h3>$errMsg</h3>";
@@ -26,18 +26,12 @@ if($errMsg){
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-Заголовок новости:<br />
+Заголовок сообщения:<br />
 <input type="text" name="title" /><br />
-Выберите категорию:<br />
-<select name="category">
-<option value="1">Политика</option>
-<option value="2">Культура</option>
-<option value="3">Спорт</option>
-</select>
-<br />
-Текст новости:<br />
+
+Текст сообщения:<br />
 <textarea name="description" cols="50" rows="5"></textarea><br />
-Источник:<br />
+Автор:<br />
 <input type="text" name="source" /><br />
 <br />
 <input type="submit" value="Добавить!" />
@@ -45,7 +39,7 @@ if($errMsg){
 </form>
 
 <?php
-include 'get_news.inc.php';
+include 'get_note.inc.php';
 ?>
 
 </body>

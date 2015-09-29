@@ -22,10 +22,38 @@ class myDB extends SQLite3{
 $db = new MyDB();
 
 Существуют запросы ответные и безответные
+
 Безответные : INSERT DELETE CREATE UPDATE. 
 $result = $db -> exec($sql); //для безответных запросов сущ метод exec который возвращает  true-false
 $db -> changes(); //метод, чтобы узнать об изменениях 
 Отслеживание ошибок:
 $db -> lastErrorCode();//возвращает номер ошибки
 $db -> lastErrorMsg();//человеческое описание ошибки
+
+Ответные запросы
+Подготовленные запросы (во избежание иньекций)
+$sql = 'SELECT name FROM user
+					WHERE id = :id';//плейсхолдер(бывают именнованные типа :id или индексированные типа :?)
+$stmt = $db -> prepare($sql);
+$stmt -> bindParam(':id', $id);
+$resalt = $stmt -> execute();
+$stmt -> close();//если больше запросов не будет, но если еще придет то можно использовать reset()
+$row = $result -> fetchArray();(это если SELECT)
+
+Получение выборки
+$result = $db ->querySingle($sql,true)//вытащить либо одну запись либо одну колонку
+-value или NULL (поумолчанию вытаскивается одна колонка)
+-array или empty array(если второй параметр true вытаскивается массив)
+-false
+
+$result = $db ->query($sql)/// в случае неудачи - false в случае удачи result
+
+$row = $result -> fetchArray();
+SQLITE3_BOTH возвр удвоенный массив
+SQLITE3_NUM возвр индексир массив
+SQLITE3_ASSOC возвр асоц массив
+
+
+
+
 
