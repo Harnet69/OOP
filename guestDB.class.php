@@ -59,8 +59,25 @@ class GuestDB {
 		$res = $this->_db->query($sql) or die ($this ->_db -> lastErrorMsg());
 		return $this->db2Arr($res);
 	}
+	
+	function editNote($id){
+		$sql = "SELECT id, title, description, author FROM note WHERE id = $id";
+		$res = $this->_db->query($sql)or die ($this ->_db -> lastErrorMsg());
+		$arr = array();
+		while($row = $res->fetchArray(SQLITE3_ASSOC)){
+			$arr[] = $row;
+		}
+		return $arr;
+	}
+	function updateNote($id, $title, $description, $author){
+		$sql = "UPDATE note SET title = '$title', description = '$description', author = '$author' WHERE id = $id";
+		$this ->_db -> exec($sql) or die($this ->_db -> lastErrorMsg());
+	}
 
-	function deleteNote($id){}
+	function deleteNote($id){
+		$sql = "DELETE FROM note WHERE id=$id";
+		$this ->_db -> exec($sql) or die($this ->_db -> lastErrorMsg());
+	}
 }
 
 ?>

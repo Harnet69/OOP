@@ -6,13 +6,17 @@ foreach($result as $item){
 		$title = $item['title'];
 		$desc = $item['description'];
 		$author =$item['author'];
-		$dt = time('d-m-Y H:i:s', $item['datetime']);
+		//$dt = date('d-m-Y H:i:s', $item['datetime']);
 		echo <<<LABEL
 		<hr>
 		Заголовок:<br>
 		$title
 		<p>Сообщение: $desc</p>
 		<br> Автор: $author
+		<br> $dt
+		<p align='right'>
+			<a href='guest.php?up=$id'>Редактировать</a>
+		</p>
 		<p align='right'>
 			<a href='guest.php?del=$id'>Удалить</a>
 		</p>
